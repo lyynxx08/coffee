@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Solutions · fully responsive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --frame-brown: #3b2b2b;
+      --hero-slate: #222021;
+      --peach-bg: #f2cbbf;
+      --accent-coffee: #b86b52;
+      --text-dark: #2b2b2b;
+      --footer-dark: #141213;
+      --card-shadow: rgba(18, 12, 10, 0.12);
+      --muted-text: #7a5a52;
+      --light-overlay: rgba(255,255,255,0.85);
+      --card-bg-pale: #edd6cd;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--frame-brown);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      background-color: var(--peach-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+    }
+
+    .h1-hero {
+      font-size: clamp(48px, 12vw, 120px);
+      font-weight: 800;
+      line-height: 1.02;
+      text-transform: uppercase;
+      color: var(--accent-coffee);
+      letter-spacing: 1px;
+    }
+
+    .h2-section {
+      font-size: clamp(24px, 5vw, 40px);
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .subheading-small {
+      font-size: clamp(12px, 2.5vw, 18px);
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--muted-text);
+      text-transform: uppercase;
+    }
+
+    .label-small {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #d6c0b6;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      height: 70px;
+      padding: 0 5%;
+      background-color: var(--peach-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background-color: var(--accent-coffee);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      color: #3b2b2b;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: clamp(16px, 3vw, 42px);
+      font-weight: 400;
+      color: #3b2b2b;
+    }
+
+    .nav-menu span {
+      cursor: default;
+    }
+
+    .search-icon {
+      font-size: 18px;
+      color: #3b2b2b;
+    }
+
+    .hero {
+      position: relative;
+      height: clamp(500px, 80vh, 820px);
+      background-color: var(--peach-bg);
+      overflow: hidden;
+    }
+
+    .hero-wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-beans {
+      position: absolute;
+      top: 5%;
+      right: 2%;
+      width: clamp(150px, 25vw, 400px);
+      z-index: 5;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,0.35));
+    }
+
+    .hero-cup {
+      position: absolute;
+      top: 30%;
+      right: 5%;
+      width: clamp(110px, 18vw, 300px);
+      z-index: 6;
+      filter: drop-shadow(0 14px 20px rgba(0,0,0,0.25));
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 25%;
+      left: 5%;
+      z-index: 10;
+      max-width: 600px;
+    }
+
+    .hero-text .label-small {
+      margin-bottom: 10px;
+    }
+
+    .hero-text .h1-hero {
+      margin-bottom: 24px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--peach-bg);
+      width: 140px;
+      height: 44px;
+      border-radius: 22px;
+      box-shadow: 0 8px 20px var(--card-shadow);
+      border: none;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text-dark);
+      cursor: pointer;
+      line-height: 44px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      background-color: #e5b9aa;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(ellipse at 30% 50%, transparent 30%, rgba(0,0,0,0.15) 90%);
+      pointer-events: none;
+      z-index: 7;
+    }
+
+    .section {
+      padding: clamp(40px, 8vw, 100px) 5%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: clamp(32px, 6vw, 48px);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: clamp(20px, 4vw, 40px);
+    }
+
+    .category-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px var(--card-shadow);
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 20px;
+      color: white;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.0) 60%);
+      z-index: 1;
+    }
+
+    .category-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .category-card h4 {
+      font-size: clamp(18px, 3vw, 22px);
+      margin-bottom: 4px;
+    }
+
+    .category-card .view-more {
+      font-size: 12px;
+      font-weight: 400;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    .shake-card {
+      background-color: var(--card-bg-pale);
+      border-radius: 16px;
+      padding: 16px 12px 20px;
+      box-shadow: 0 12px 24px var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 44px;
+      height: 22px;
+      background: var(--light-overlay);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .badge i {
+      font-size: 10px;
+      color: #b86b52;
+    }
+
+    .shake-image {
+      width: clamp(100px, 18vw, 170px);
+      height: clamp(100px, 18vw, 170px);
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 24px 0 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border: 3px solid white;
+    }
+
+    .shake-card h4 {
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: clamp(18px, 4vw, 24px);
+      color: var(--accent-coffee);
+      margin-bottom: 12px;
+    }
+
+    .btn-buy {
+      background-color: var(--hero-slate);
+      color: white;
+      border: none;
+      width: 90px;
+      height: 32px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-buy:hover {
+      background-color: #3b2b2b;
+    }
+
+    .blog-card {
+      background-color: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px var(--card-shadow);
+    }
+
+    .blog-thumb {
+      width: 100%;
+      height: clamp(120px, 20vw, 170px);
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 16px;
+    }
+
+    .blog-content h4 {
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .blog-content p {
+      font-size: 14px;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      opacity: 0.8;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .read-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-coffee);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .read-link i {
+      font-size: 12px;
+    }
+
+    .footer {
+      background-color: var(--footer-dark);
+      padding: 48px 5% 0;
+      color: #d8cfc9;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h5 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      font-size: 12px;
+    }
+
+    .footer-col li {
+      margin-bottom: 8px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 16px;
+      transition: background-color 0.2s;
+    }
+
+    .social-icon:hover {
+      background-color: var(--accent-coffee);
+    }
+
+    .legal-bar {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      font-size: 12px;
+    }
+
+    .legal-bar a {
+      color: #d8cfc9;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 640px) {
+      .nav-menu {
+        display: none;
+      }
+      .hero-text {
+        top: 15%;
+      }
+      .hero-cup {
+        top: 40%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="logo-area">
+        <div class="logo-mark" role="img" aria-label="Coffee Solutions logo">CS</div>
+        <span class="brand-name">Coffee Solutions</span>
+      </div>
+      <div class="nav-menu">
+        <span>Home</span>
+        <span>Shop</span>
+        <span>Blog</span>
+        <span>Contact</span>
+      </div>
+      <div class="search-icon" aria-label="Search">
+        <i class="fas fa-search"></i>
+      </div>
+    </nav>
+
+    <section class="hero" aria-label="Hero">
+      <svg class="hero-wave" viewBox="0 0 1080 520" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#222021" d="M0,0 L1080,0 L1080,420 C900,480 720,520 540,520 C360,520 180,480 0,420 Z"/>
+      </svg>
+      <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Scattered roasted coffee beans" class="hero-beans">
+      <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Top view espresso cup" class="hero-cup">
+      <div class="hero-text">
+        <p class="label-small">FRESHLY ROASTED</p>
+        <h1 class="h1-hero">COFFEE</h1>
+        <a href="#" class="cta-button" aria-label="Shop now for freshly roasted coffee">Shop now</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="h2-section">TOP CATEGORIES</h2>
+        <p class="subheading-small">Explore The Recent Most Bought Drinks This Week</p>
+      </div>
+      <div class="grid-3">
+        <div class="category-card" style="background-image: url('https://images.unsplash.com/photo-1578314675249-a6910f80cc39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Coffee mocha cup on saucer">
+          <h4>Mocha</h4>
+          <span class="view-more">View More</span>
+        </div>
+        <div class="category-card" style="background-image: url('https://images.unsplash.com/photo-1559526323-cb2f2fe2591b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Americano cup">
+          <h4>Americano</h4>
+          <span class="view-more">View More</span>
+        </div>
+        <div class="category-card" style="background-image: url('https://images.unsplash.com/photo-1534778101976-62847782c213?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" role="img" aria-label="Cappuccino cup and foam">
+          <h4>Cappuccino</h4>
+          <span class="view-more">View More</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="h2-section">TOP MILK SHAKES</h2>
+        <p class="subheading-small">Cool & creamy favourites</p>
+      </div>
+      <div class="grid-3">
+        <div class="shake-card">
+          <div class="badge"><i class="fas fa-heart"></i> 20</div>
+          <img src="https://images.unsplash.com/photo-1572490122740-4b493a7c2aef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Green mocha milkshake" class="shake-image">
+          <h4>Green Mocha</h4>
+          <div class="price">$20.00</div>
+          <button class="btn-buy" aria-label="Buy now Green Mocha">Buy Now</button>
+        </div>
+        <div class="shake-card">
+          <div class="badge"><i class="fas fa-heart"></i> 20</div>
+          <img src="https://images.unsplash.com/photo-1604328822571-7e44e1b7f1b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lavender milkshake" class="shake-image">
+          <h4>Lavender</h4>
+          <div class="price">$20.00</div>
+          <button class="btn-buy" aria-label="Buy now Lavender">Buy Now</button>
+        </div>
+        <div class="shake-card">
+          <div class="badge"><i class="fas fa-heart"></i> 20</div>
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Caramel milkshake" class="shake-image">
+          <h4>Caramel</h4>
+          <div class="price">$20.00</div>
+          <button class="btn-buy" aria-label="Buy now Caramel">Buy Now</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="h2-section">LATEST BLOGS</h2>
+        <p class="subheading-small">Coffee stories & news</p>
+      </div>
+      <div class="grid-3">
+        <div class="blog-card">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="People enjoying coffee in cafe" class="blog-thumb">
+          <div class="blog-content">
+            <h4>Coffee Connoisseur</h4>
+            <p>Discover the art of pour-over and why local roasters matter...</p>
+            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="People enjoying coffee in cafe" class="blog-thumb">
+          <div class="blog-content">
+            <h4>Latte Art Masters</h4>
+            <p>We interview baristas from around the world...</p>
+            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="People enjoying coffee in cafe" class="blog-thumb">
+          <div class="blog-content">
+            <h4>Bean Origins</h4>
+            <p>Ethiopian Yirgacheffe vs Colombian – tasting notes...</p>
+            <a href="#" class="read-link">Read <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h5>ABOUT</h5>
+          <ul>
+            <li>Our story</li>
+            <li>Careers</li>
+            <li>Sustainability</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>MENU</h5>
+          <ul>
+            <li>Coffee</li>
+            <li>Milkshakes</li>
+            <li>Pastries</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>SUPPORT</h5>
+          <ul>
+            <li>FAQs</li>
+            <li>Shipping</li>
+            <li>Returns</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>FOLLOW US</h5>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="legal-bar">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <span>© 2026 Coffee Solutions</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
